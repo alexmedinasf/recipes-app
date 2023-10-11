@@ -1,0 +1,15 @@
+
+<h1>public</h1>
+
+<% @user.each do |user| %>
+<% user.recipes.each do |recipe| %>
+<% if recipe.public%>
+    <div>
+    <%= user.name%>
+    <%= recipe.name %>
+    <%= recipe.name %>
+    <%= link_to "recipe details", user_recipe_path(user.id,recipe.id) %>
+    </div>
+<%end%>
+<%end%>
+<%end%>

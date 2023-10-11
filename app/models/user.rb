@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :recipes, class_name: 'Recipe', foreign_key: 'user_id'
 
   validates :name, presence: true
+
+  def recipes
+    recipes.order('created_at Desc')
+  end
 end
