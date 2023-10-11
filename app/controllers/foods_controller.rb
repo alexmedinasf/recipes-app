@@ -2,10 +2,8 @@ class FoodsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
   def index
-    return unless params[:user_id]
-
     @user = User.find(params[:user_id])
-    @foods = Food.all
+    @foods = @user.foods
   end
 
   def new
