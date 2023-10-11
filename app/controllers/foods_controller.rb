@@ -2,10 +2,8 @@ class FoodsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
 
   def index
-    return unless params[:user_id]
-
     @user = User.find(params[:user_id])
-    @foods = Food.all
+    @foods = @user.foods
   end
 
   def new
@@ -17,10 +15,10 @@ class FoodsController < ApplicationController
     new_food = current_user.foods.new(food_params)
     if new_food.save
       flash[:success] = 'New food added'
-      # TBD redirect path to food menu
+      redirect_to foods_path
     else
       flash[:error] = 'Error: Food could not be added'
-      # TBD redirect path to food menu
+      render 'new'
     end
   end
 
@@ -36,6 +34,6 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:measurement_unit, :price)
+    params.require(:food).permit(:name, :measurement_unit, :price)
   end
 end

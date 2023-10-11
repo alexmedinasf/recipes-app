@@ -1,0 +1,9 @@
+<%= form_with model: [@food], local:true do |form| %>
+  <%= form.label :name, "Food name"%>
+  <%= form.text_field :name %> <br><br>
+  <%= form.label :measurement_unit, "Measure Unit"%>
+  <%= form.select :measurement_unit, ['units','grams', 'kilograms', 'liters'] %><br><br>
+  <%= form.label :price, "Unit price"%>
+  <%= form.text_field :price, placeholder: "Unit price " %><br><br>
+  <%= form.submit "Add Food", class: "button" %>
+<% end %>
