@@ -1,0 +1,24 @@
+<h1>recipe show</h1>
+    <div>
+        <%= @recipe.name%>
+    </div>
+    <div>
+        <div>
+            prearation time: <%= @recipe.preparation_time%> hour
+        </div>
+        <div>
+            Public: <%= check_box_tag checked: @recipe.public %>
+        </div>
+    </div>
+    Cooking time: <%= @recipe.cooking_time%> hour
+    <div>
+    Steeps go here...
+    </div>
+    <%= link_to "Add ingrendet", user_recipe_foods_path(params[:user_id],params[:id])%>
+    <% @food.each do |food| %>
+        <div>
+            <%= render food %>
+        </div>
+            <%= link_to "Remove",user_recipe_food_path(params[:user_id], params[:id], food.id),data: {turbo_method: :delete}  %>
+            <%= link_to "Modify",edit_user_recipe_path(params[:user_id], params[:id], food.id), method: :edit  %>
+    <% end %>
