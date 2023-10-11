@@ -1,16 +1,19 @@
-class RecipeFood < ApplicationRecord
+class Recipe < ApplicationRecord
   # associations
-  belongs_to :recipe, class_name: 'Recipe', foreign_key: 'recipe_id'
-  belongs_to :food, class_name: 'Food', foreign_key: 'food_id'
-
-  def inc_food_items
-    Food.all.length
-  end
+  belongs_to :user, class_name: 'User', foreign_key: 'user_id'
+  has_many :recipe_foods, dependent: :destroy, foreign_key: 'recipe_id'
+  has_many :foods, through: :recipe_foods
 
   # validations
-  validates :recipe_id, presence: true
-  validates :food_id, presence: true
-  validates :recipe_id, uniqueness: { scope: :food_id, message: 'This food is already added to this recipe' }
-  # validate quantity
-  validates :quantity, presence: true
+  validates :name, presence: true
+  validates :preparation_time, presence: true
+  validates :cooking_time, presence: true
+  validates :description, presence: true
+
+  # helper method for clarity
+  def public?
+    is_public
+  end
+
+  # add any other methods as per your application's needs
 end
