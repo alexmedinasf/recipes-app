@@ -11,7 +11,9 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
-    @users = User.where(id: params[:user_id]).includes(:recipes)
+    @user = current_user
+    @recipe = @user.recipes.find_by(id: params[:id])
+
     @recipefoods = RecipeFood.includes(:food).where(recipe_id: params[:id])
   end
 
@@ -58,16 +60,15 @@ class RecipesController < ApplicationController
   def destroy
     @user = current_user
     @recipe = @user.recipes.find_by(id: params[:id])
-   
+
     if @recipe
       @recipe.destroy
       redirect_to recipes_path
     else
       flash[:error] = 'Error'
     end
-    
   end
-  
+
   private
 
   # callbacks to share common setup or constraints between actions.
