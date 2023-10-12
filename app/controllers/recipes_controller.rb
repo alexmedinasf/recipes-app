@@ -1,10 +1,11 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update destroy]
-  load_and_authorize_resource
+  before_action :authenticate_user!, :set_recipe, only: %i[show edit update destroy]
+  # load_and_authorize_resource
 
   # GET /recipes or /recipes.json
   def index
-    @recipes = Recipe.all
+    @user = current_user
+    @recipes = @user.recipes
   end
 
   # GET /recipes/1 or /recipes/1.json
