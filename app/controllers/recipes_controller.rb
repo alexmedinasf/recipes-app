@@ -12,7 +12,7 @@ class RecipesController < ApplicationController
   # GET /recipes/1 or /recipes/1.json
   def show
     @user = current_user
-    @recipe = @user.recipes.find_by(id: params[:id])
+    @recipe = @user.recipes.find(params[:id])
 
     @recipefoods = RecipeFood.includes(:food).where(recipe_id: params[:id])
   end
@@ -33,8 +33,7 @@ class RecipesController < ApplicationController
     flash[:success] = 'The recipe food was created.'
     respond_to do |format|
       if new_recipe.save
-        format.html { redirect_to recipes_path, notice: 'Recipe was successfully created.' }
-        format.json { render :show, status: :created, location: @recipe }
+        redirect_to recipes_path
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
