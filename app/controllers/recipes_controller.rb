@@ -56,15 +56,18 @@ class RecipesController < ApplicationController
 
   # DELETE /recipes/1 or /recipes/1.json
   def destroy
-    @recipe.destroy
-
-    flash[:success] = 'The recipe was deleted.'
-    respond_to do |format|
-      format.html { redirect_to user_recipes_path(params[:user_id]), notice: 'Recipe was successfully destroyed.' }
-      format.json { head :no_content }
+    @user = current_user
+    @recipe = @user.recipes.find_by(id: params[:id])
+   
+    if @recipe
+      @recipe.destroy
+      redirect_to recipes_path
+    else
+      flash[:error] = 'Error'
     end
+    
   end
-
+  
   private
 
   # callbacks to share common setup or constraints between actions.
