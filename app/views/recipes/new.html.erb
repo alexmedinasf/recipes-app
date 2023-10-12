@@ -1,0 +1,11 @@
+<%= form_with model: [@recipe], local:true do |form| %>
+  <%= form.label :name, "Recipe name"%>
+  <%= form.text_field :name %> <br><br>
+  <%= form.label :preparation_time, "Preparation time"%>
+  <%= form.text_field :preparation_time %><br><br>
+   <%= form.label :cooking_time_time, "Cooking time"%>
+  <%= form.text_field :cooking_time %><br><br>
+  <%= form.label :description, "Recipe description"%>
+  <%= form.text_area :description, placeholder: "Description " %><br><br>
+  <%= form.submit "Save new recipe", class: "button" %>
+<% end %>
