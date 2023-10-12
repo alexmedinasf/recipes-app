@@ -5,5 +5,7 @@
   <%= form.select :measurement_unit, ['units','grams', 'kilograms', 'liters'] %><br><br>
   <%= form.label :price, "Unit price"%>
   <%= form.text_field :price, placeholder: "Unit price " %><br><br>
+  <%= form.label :quantity, "Amount of food"%>
+  <%= form.text_field :quantity, placeholder: "Quantity " %><br><br>
   <%= form.submit "Add Food", class: "button" %>
 <% end %>
