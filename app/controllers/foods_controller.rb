@@ -1,8 +1,8 @@
 class FoodsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!
 
   def index
-    @user = User.find(params[:user_id])
+    @user = current_user
     @foods = @user.foods
   end
 
@@ -29,7 +29,17 @@ class FoodsController < ApplicationController
     @foods = @user.foods
   end
 
-  def destroy; end
+  def destroy
+    @user = current_user
+    @food = @user.foods.find_by(id: params[:id])
+
+    if @food
+      @food.destroy
+      redirect_to foods_path
+    else
+      flash[:error] = 'Error'
+    end
+  end
 
   private
 
