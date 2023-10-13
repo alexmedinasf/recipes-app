@@ -1,7 +1,8 @@
 <h1>Public Recipes</h1>
 
 <% @recipes.each do |recipe| %>
-    <div>
+<%= link_to(recipe_path(recipe)) do %>
+  <div>
     <%= recipe.name %>
     <%= "by #{recipe.user.name}"%>
     <%= recipe.recipe_foods.count %>
@@ -9,6 +10,6 @@
       <% @amount += ((f.quantity * f.food.price)) %>
     <%end%>
     <%="Total amount #{@amount}"%>
-    <%= link_to "recipe details", recipe_path(recipe.id) %>
-    </div>
+  </div>
+<%end%>  
 <%end%>
