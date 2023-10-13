@@ -6,7 +6,7 @@
 
   <br/>
 
-  <h3><b>Recipe App</b></h3>
+  <h3><b>Recipes App</b></h3>
 
 </div>
 
@@ -33,11 +33,11 @@
 - [📝 License](#license)
 
 
-# 🍔 Recepie App <a name="about-project"></a>
+# Recipe App <a name="about-project"></a>
 
 
 
-**Recepie App** is an aplication with Ruby on rails that deploy the information and new
+**Recipe App** is an aplication with Ruby on rails that deploy the information and new
 
 ## 🛠 Built With <a name="built-with"></a>
 
