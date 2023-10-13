@@ -29,7 +29,7 @@ class RecipeFoodsController < ApplicationController
 
     if @recipe_food.save
       flash[:success] = 'Recipe ingredient was successfully created'
-      redirect_to @recipe_path.recipe
+      redirect_to request.referrer #HAY QUE REVISAR ESTA RUTA AL ASOCIAR LAS VISTAS
     else
       flash[:error] = 'Error: Food could not be added'
       redirect_to request.referrer
