@@ -9,10 +9,10 @@
       </li>
     <% else %>
       <li class="nav-item">
-        <a class="nav-link auth-link" href="<%= new_user_session_path %>">Login</a>
+        <a class="nav-link auth-link" href="<%= new_user_session_path %>">Sign In</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link auth-link" href="<%= new_user_registration_path %>">Register</a>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link auth-link' %>
       </li>
     <% end %>
     <li class="nav-item">

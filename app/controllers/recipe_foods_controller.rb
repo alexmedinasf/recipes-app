@@ -39,7 +39,7 @@ class RecipeFoodsController < ApplicationController
 
   def update
     @recipe_food = RecipeFood.find(params[:id])
-   
+
     if @recipe_food.update(update_recipe_food)
       flash[:success] = 'food recipe updated'
     else
