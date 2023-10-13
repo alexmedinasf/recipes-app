@@ -10,12 +10,35 @@
   <div>
     Steps go here...
   </div>
-  
-    <% @recipe.foods.each do |food| %>
-        <div>
-            <%= render food_path %>
-        </div>
-            <%= link_to "Remove",user_recipe_food_path(params[:user_id], params[:id], food.id),data: {turbo_method: :delete}  %>
-            <%= link_to "Modify",edit_user_recipe_path(params[:user_id], params[:id], food.id), method: :edit  %>
-    <% end %>
 </div>    
+
+<div class="generate-and-add">
+  <button>Generate shopping list</button>
+   <button>Add new ingredient</button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Value</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe.recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= recipe_food.food.name %></td>
+        <td><%= recipe_food.food.quantity %></td>   
+        <td><%= recipe_food.food.price * recipe_food.food.quantity%></td>
+        <td></div>
+          <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food) %>
+          <%= form_with(model: recipe_food, url: recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete, data: { confirm: 'Remove it?' }) do |form| %>
+           <%= form.submit 'Remove' %>
+          <% end %>
+        </td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>    

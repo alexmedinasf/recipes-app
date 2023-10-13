@@ -1,0 +1,33 @@
+<nav id="main-navbar">
+  <div class="navbar-brand">
+    <a href="#">Recipe App</a>
+  </div>
+  <ul class="navbar-nav">
+    <% if user_signed_in? %>
+      <li class="nav-item">
+        <%= link_to 'Sign Out', destroy_user_session_path, class: "nav-link auth-link", data: { turbo_method: :delete } %>
+      </li>
+    <% else %>
+      <li class="nav-item">
+        <a class="nav-link auth-link" href="<%= new_user_session_path %>">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link auth-link" href="<%= new_user_registration_path %>">Register</a>
+      </li>
+    <% end %>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= foods_path %>">Food List</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= new_food_path %>">Add Food</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= recipes_path %>">Recipes List</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<%= new_recipe_path %>">Add Recipe</a>
+    </li>
+     <li class="nav-item">
+      <a class="nav-link" href="<%= new_recipe_path %>">Shoppin List</a>
+    </li>
+</nav>    
