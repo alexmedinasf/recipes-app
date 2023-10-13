@@ -9,6 +9,7 @@
       <th>Food</th>
       <th>Measurement unit</th>
       <th>Unit price</th>
+      <th>Quantity</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= food.name %></td>
         <td><%= food.measurement_unit %></td>
         <td><%= food.price %></td>
+        <td><%= food.quantity %></td>
         <td><%= button_to "Delete", food_path(food), method: :delete %></td>
       </tr>
     <% end %>

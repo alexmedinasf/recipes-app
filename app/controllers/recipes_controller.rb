@@ -28,16 +28,13 @@ class RecipesController < ApplicationController
 
   # POST /recipes or /recipes.json
   def create
-    new_recipe = current_user.recipes.new(recipe_params)
+    @recipe = current_user.recipes.new(recipe_params)
 
-    flash[:success] = 'The recipe food was created.'
-    respond_to do |format|
-      if new_recipe.save
-        redirect_to recipes_path
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
+    if @recipe.save
+      flash[:success] = 'The recipe food was created.'
+      redirect_to recipes_path
+    else
+        flash[:error] = 'Error occured.'
     end
   end
 
