@@ -33,11 +33,11 @@
 - [📝 License](#license)
 
 
-# Recipe App <a name="about-project"></a>
+# Recipes App <a name="about-project"></a>
 
 
 
-**Recipe App** is an aplication with Ruby on rails that deploy the information and new
+**Recipes App** is an aplication with Ruby on rails that deploy the information and new
 
 ## 🛠 Built With <a name="built-with"></a>
 
