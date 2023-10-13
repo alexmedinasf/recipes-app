@@ -150,8 +150,6 @@ Ubuntu
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
-
 👤 **Hernán Güemes**
 - GitHub: [@HFG43](https://github.com/HFG43)
 - LinkedIn: [hernanguemes](https://www.linkedin.com/in/hernanguemes)
