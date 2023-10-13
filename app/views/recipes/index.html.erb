@@ -1,9 +1,9 @@
 <% @recipes.each do |recipe|%>
-  <div>
-    <h2><%= "Recipe #{recipe.id}" %></h2>
-    <%= button_to "Delete", recipe_path(recipe), method: :delete %>
-  </div>
-  <div>
-    <p><%= recipe.description%></p>
+  <div class="recipe-card">
+    <h2 class="recipe-title"><%= "Recipe #{recipe.id}" %></h2>
+    <%= button_to "Delete", recipe_path(recipe), method: :delete, class: "delete-button" %>
+    <div class="recipe-description">
+      <p><%= recipe.description %></p>
+    </div>
   </div>
 <%end%>

@@ -1,14 +1,12 @@
-
-<h1>public</h1>
+<h1 class="public-title">public</h1>
 
 <% @user.each do |user| %>
 <% user.recipes.each do |recipe| %>
 <% if recipe.public%>
-    <div>
-    <%= user.name%>
-    <%= recipe.name %>
-    <%= recipe.name %>
-    <%= link_to "recipe details", user_recipe_path(user.id,recipe.id) %>
+    <div class="public-recipe-card">
+      <span class="user-name"><%= user.name %></span>
+      <span class="recipe-name"><%= recipe.name %></span>
+      <%= link_to "recipe details", user_recipe_path(user.id,recipe.id), class: "details-link" %>
     </div>
 <%end%>
 <%end%>

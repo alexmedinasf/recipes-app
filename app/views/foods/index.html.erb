@@ -1,9 +1,8 @@
-<br><br><br>
-<button>
-  <%= link_to 'Add Food!', new_food_path(@foods) %>
-</button>
-
-<table>
+<div class="food-container">
+  <button class="add-food-button">
+    <%= link_to 'Add Food!', new_food_path(@foods), class: "add-food-link" %>
+  </button>
+  <table class="food-table">
   <thead>
     <tr>
       <th>Food</th>

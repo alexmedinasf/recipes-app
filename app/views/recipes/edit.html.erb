@@ -1,7 +1,6 @@
-<h1>Editing recipe</h1>
+<h1 class="edit-title">Editing recipe</h1>
 <%= render "form", recipe: @recipe %>
 <br>
-
-<div>
-  <%= link_to "Back to recipes", user_recipe_path %>
+<div class="back-link">
+  <%= link_to "Back to recipes", user_recipe_path, class: "link" %>
 </div>
