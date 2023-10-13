@@ -49,3 +49,53 @@
   background-color: #e7e7e7;
   border-radius: 5px;
 }
+
+.edit-title, .public-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.link, .details-link {
+  color: blue;
+  text-decoration: none;
+}
+
+.recipe-card, .public-recipe-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.recipe-title {
+  font-size: 20px;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.food-container {
+  margin: 50px 0;
+}
+
+.add-food-button {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+}
+
+.add-food-link {
+  color: white;
+  text-decoration: none;
+}
+
+.food-table {
+  width: 100%;
+  border-collapse: collapse;
+}
