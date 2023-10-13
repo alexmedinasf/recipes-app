@@ -42,10 +42,10 @@ class RecipesController < ApplicationController
     end
   end
 
-def destroy
-  @user = current_user
-  @recipe = @user.recipes.find_by(id: params[:id])
-  if @recipe
+  def destroy
+    @user = current_user
+    @recipe = @user.recipes.find_by(id: params[:id])
+    if @recipe
       @recipe.destroy
       redirect_to recipes_path
     else
@@ -55,7 +55,6 @@ def destroy
 
   private
 
- 
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
