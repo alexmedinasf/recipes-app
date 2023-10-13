@@ -3,7 +3,8 @@
     Prearation time: <%= @recipe.preparation_time%> hour/s
   </div>
   <div>
-    Public: <%= check_box_tag checked: @recipe.public %>
+    <%= @recipe.public %>
+    <%= button_to "Public", recipe_path(@recipe), method: :patch %> 
   </div>
   </div>
     Cooking time: <%= @recipe.cooking_time%> hour/s
@@ -14,7 +15,7 @@
 
 <div class="generate-and-add">
   <button>Generate shopping list</button>
-   <button>Add new ingredient</button>
+  <button><%= link_to "Add new ingredient", new_recipe_recipe_food_path(@recipe) %></button>
 </div>
 
 <table>
@@ -27,11 +28,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @recipe.recipe_foods.each do |recipe_food| %>
+    <% @recipe_foods.each do |recipe_food| %>
       <tr>
         <td><%= recipe_food.food.name %></td>
-        <td><%= recipe_food.food.quantity %></td>   
-        <td><%= recipe_food.food.price * recipe_food.food.quantity%></td>
+        <td><%= recipe_food.quantity %></td>   
+        <td><%= recipe_food.food.price * recipe_food.quantity%></td>
         <td></div>
           <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food) %>
           <%= form_with(model: recipe_food, url: recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete, data: { confirm: 'Remove it?' }) do |form| %>
@@ -41,4 +42,5 @@
       </tr>
     <% end %>
   </tbody>
-</table>    
+</table>
+

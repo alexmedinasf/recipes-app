@@ -6,3 +6,5 @@
   <%= form.hidden_field :recipe_id, value: @recipe.id %>
   <%= form.submit "Add ingredient", class: "button" %>
 <% end %>
+
+<button><%= link_to "Back to recipe", recipe_path(@recipe)%></button>

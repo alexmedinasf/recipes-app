@@ -20,6 +20,8 @@ class RecipeFoodsController < ApplicationController
 
   # GET /recipe_foods/1/edit
   def edit
+    @user = current_user
+    @recipe = Recipe.find(params[:recipe_id])
     @recipe_food = RecipeFood.find(params[:id])
   end
 
@@ -35,12 +37,17 @@ class RecipeFoodsController < ApplicationController
     redirect_to request.referrer
   end
 
-  # PATCH/PUT /recipe_foods/1 or /recipe_foods/1.json
   def update
-    @recipe_food.find_by(id: params[:id])
+    @recipe_food = RecipeFood.find(params[:id])
+   
+    if @recipe_food.update(update_recipe_food)
+      flash[:success] = 'food recipe updated'
+    else
+      flash[:error] = 'Error'
+    end
+    redirect_to recipe_path(@recipe_food.recipe.id)
   end
 
-  # DELETE /recipe_foods/1 or /recipe_foods/1.json
   def destroy
     @recipe_food = RecipeFood.find(params[:id])
     @recipe_food.destroy
@@ -49,13 +56,15 @@ class RecipeFoodsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_recipe_food
     @recipe_food = RecipeFood.find(params[:id])
-    @foods_to_select = @foods.where.not(id: @recipe_food.pluck(:food_id))
+    @foods = @recipe_food.food
   end
 
-  # Only allow a list of trusted parameters through.
+  def update_recipe_food
+    params.require(:recipe_food).permit(:quantity)
+  end
+
   def recipe_food_params
     params.require(:recipe_food).permit(:quantity, :recipe_id, :food_id)
   end

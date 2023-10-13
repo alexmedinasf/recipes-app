@@ -14,19 +14,23 @@ class RecipesController < ApplicationController
     @user = current_user
     @recipe = @user.recipes.find(params[:id])
     @foods = Food.all
-    RecipeFood.includes(:food).where(recipe_id: params[:id])
+    @recipe_foods = RecipeFood.includes(:food).where(recipe_id: params[:id])
   end
 
-  # GET /recipes/new
+  def update
+    @recipe = Recipe.find(params[:id])
+    new_value_public = @recipe.public ? false : true
+    @recipe.update(public: new_value_public)
+    redirect_to recipe_path(@recipe)
+  end
+
   def new
     @user = current_user
     @recipe = @user.recipes.new
   end
 
-  # GET /recipes/1/edit
   def edit; end
 
-  # POST /recipes or /recipes.json
   def create
     @recipe = current_user.recipes.new(recipe_params)
 
@@ -38,26 +42,10 @@ class RecipesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recipes/1 or /recipes/1.json
-  def update
-    flash[:success] = 'The recipe was upataded.'
-    respond_to do |format|
-      if @recipe.update(recipe_params)
-        format.html { redirect_to user_recipes_path(params[:user_id]), notice: 'Recipe was successfully updated.' }
-        format.json { render :show, status: :ok, location: @recipe }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /recipes/1 or /recipes/1.json
-  def destroy
-    @user = current_user
-    @recipe = @user.recipes.find_by(id: params[:id])
-
-    if @recipe
+def destroy
+  @user = current_user
+  @recipe = @user.recipes.find_by(id: params[:id])
+  if @recipe
       @recipe.destroy
       redirect_to recipes_path
     else
@@ -67,7 +55,7 @@ class RecipesController < ApplicationController
 
   private
 
-  # callbacks to share common setup or constraints between actions.
+ 
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
