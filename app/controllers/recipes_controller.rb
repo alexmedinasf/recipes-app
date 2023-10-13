@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
     @user = current_user
     @recipe = @user.recipes.find(params[:id])
     @foods = Food.all
-    recipe_foods = RecipeFood.includes(:food).where(recipe_id: params[:id])
+    RecipeFood.includes(:food).where(recipe_id: params[:id])
   end
 
   # GET /recipes/new
@@ -34,7 +34,7 @@ class RecipesController < ApplicationController
       flash[:success] = 'The recipe food was created.'
       redirect_to recipes_path
     else
-        flash[:error] = 'Error occured.'
+      flash[:error] = 'Error occured.'
     end
   end
 

@@ -16,7 +16,7 @@ RSpec.describe Recipe, type: :model do
 
   describe '#public?' do
     let(:recipe) { build(:recipe, is_public: true) }
-    
+
     it 'returns true if the recipe is public' do
       expect(recipe.public?).to eq(true)
     end
