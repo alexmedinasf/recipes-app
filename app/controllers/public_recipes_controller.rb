@@ -1,9 +1,6 @@
 class PublicRecipesController < ApplicationController
   def index
-    @user = User.all
-    @recipes = Recipe.all
-    # @recipe = Recipe.find(params[:id])
-    @foods = Food.all
-    # @recipe_foods = @recipes.recipe_foods
+    @recipes = Recipe.includes(:recipe_foods, :user, :foods).where(public: true)
+    @amount = 0
   end
 end
