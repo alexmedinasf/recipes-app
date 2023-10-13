@@ -1,0 +1,8 @@
+<%= form_with(model: @recipe_food, url: recipe_recipe_foods_path(@recipe)) do |form| %>
+  <%= form.label "Select Ingredient"%>
+  <%= form.collection_select(:food_id, @foods_to_select, :id, :name) %> <br><br>
+  <%= form.label "Define quantity for the ingredient "%>
+  <%= form.number_field :quantity, min: 1 %><br><br>
+  <%= form.hidden_field :recipe_id, value: @recipe.id %>
+  <%= form.submit "Add ingredient", class: "button" %>
+<% end %>

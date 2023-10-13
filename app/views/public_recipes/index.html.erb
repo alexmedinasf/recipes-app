@@ -1,0 +1,11 @@
+<% @user.each do |user| %>
+<% @recipes.each do |recipe| %>
+    <div>
+    <%= recipe.name %>
+    <%= "by #{user.name}"%>
+    <%= @recipe_foods %>
+    <%= link_to "recipe details", recipe_path(recipe.id) %>
+    </div>
+<%end%>
+<%end%>
+<%= @recipe.recipe_foods%>
