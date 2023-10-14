@@ -1,0 +1,28 @@
+<h1 class="app-title">Your Food List</h1>
+
+<table class="food-table">
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Measurement unit</th>
+      <th>Unit price</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do |food| %>
+      <tr>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= food.price %></td>
+        <td><%= food.quantity %></td>
+        <td class="action-column"><%= button_to "Delete", food_path(food), method: :delete, class: "delete-button"  %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<button class="add-button">
+  <%= link_to 'Add Food!', new_food_path %>
+</button>

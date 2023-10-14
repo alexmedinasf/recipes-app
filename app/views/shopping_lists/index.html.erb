@@ -1,0 +1,22 @@
+<div class="m-20">
+  <h1 class="mb-11 text-3xl text-center font-medium">Shopping List</h1>
+  <table class="food-table">
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+    <h2 class="recipe-header">Amount of items to buy: <%= @value[1].length%></h2>
+    <h2 class="recipe-header">Total value of food needed: <%= @value[0]%>  
+    <% @foods.each do |food| %>
+    <% unless @value[1][food.id].nil? %>
+    <tr>       
+        <td class="p-4"><%= food.name %></td>
+        <td class="p-4"><%= @value[1][food.id] - food.quantity%></td>
+        <td class="p-4"><%= food.price * (@value[1][food.id] - food.quantity) %></td>
+    </tr>
+    <% end %>
+    <% end %>
+  </table>
+</div>
+

@@ -1,0 +1,52 @@
+<div class="recipe-container">
+<div>
+  <h3 class="recipe-header">
+    Prearation time: <%= @recipe.preparation_time%> hour/s
+  </h3>
+  <div>
+    <% if can? :manage, @recipe %>
+      <%= button_to "#{@recipe.public ? 'Public' : 'Not Public'}", recipe_path(@recipe), method: :patch %>
+    <%end%>
+  </div>
+  <h3 class="recipe-header">
+    Cooking time: <%= @recipe.cooking_time%> hour/s
+  </h3>
+   <div>
+    <%= @recipe.description%>
+  </div>
+</div>    
+
+
+<% if can? :manage, @recipe %>
+<div class="generate-and-add">
+  <button><%= link_to "Generate Shopping List", general_shopping_list_path %></button>
+  <button><%= link_to "Add new ingredient", new_recipe_recipe_food_path(@recipe) %></button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Value</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= recipe_food.food.name %></td>
+        <td><%= recipe_food.quantity %></td>   
+        <td><%= recipe_food.food.price * recipe_food.quantity%></td>
+        <td></div>
+          <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_food.recipe, recipe_food) %>
+          <%= form_with(model: recipe_food, url: recipe_recipe_food_path(recipe_food.recipe, recipe_food), method: :delete, data: { confirm: 'Remove it?' }) do |form| %>
+           <%= form.submit 'Remove' %>
+          <% end %>
+        </td>  
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%end%>
+</div>

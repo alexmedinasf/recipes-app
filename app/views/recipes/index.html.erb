@@ -1,0 +1,11 @@
+<% @recipes.each do |recipe|%>
+  <div class="recipe-container d-flex">
+    <div class="recipe-header show-rec">
+
+      <h2><%= link_to "Recipe: #{recipe.name}",recipe_path(recipe) %></h2>
+    <%= button_to "Delete", recipe_path(recipe), method: :delete, class: "remove-button" %>
+  </div>
+  <div>
+    <p><%= recipe.description%></p>
+  </div>
+<%end%>
