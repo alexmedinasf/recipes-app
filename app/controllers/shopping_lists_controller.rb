@@ -15,7 +15,7 @@ class ShoppingListsController < ApplicationController
         else
           @food_data[rf.food.id] += rf.quantity
         end
-        subtotal = ((rf.food.quantity - rf.quantity) * rf.food.price)
+        subtotal = ((rf.quantity - rf.food.quantity) * rf.food.price)
         @total += subtotal
       end
     end

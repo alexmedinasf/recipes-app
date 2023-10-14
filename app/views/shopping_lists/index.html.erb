@@ -12,8 +12,8 @@
     <% unless @value[1][food.id].nil? %>
     <tr>       
         <td class="p-4"><%= food.name %></td>
-        <td class="p-4"><%= food.quantity - @value[1][food.id]%></td>
-        <td class="p-4"><%= food.price * (food.quantity - @value[1][food.id]) %></td>
+        <td class="p-4"><%= @value[1][food.id] - food.quantity%></td>
+        <td class="p-4"><%= food.price * (@value[1][food.id] - food.quantity) %></td>
     </tr>
     <% end %>
     <% end %>
