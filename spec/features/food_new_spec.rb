@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Food', type: :feature do
-
   before do
     @user = User.create(id: 10, name: 'HFG', email: 'xxx@xxx.com', password: '123456password',
-        confirmed_at: Time.now)
+                        confirmed_at: Time.now)
     login_as(@user)
   end
 
@@ -24,5 +23,4 @@ RSpec.feature 'Food', type: :feature do
     visit new_food_path
     expect(page).to have_content('Add')
   end
-
 end

@@ -9,6 +9,6 @@ RSpec.describe 'PublicRecipes', type: :request do
     it 'should render the correct template' do
       get public_recipes_path
       expect(response).to render_template('public_recipes/index')
-    end  
+    end
   end
 end
