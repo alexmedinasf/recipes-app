@@ -1,12 +1,19 @@
-<h1>Create a new recipe</h1>
+<h1 class="app-title">Create a new recipe</h1>
 
-<%= form_with(model: @recipe_food, url: recipe_recipe_foods_path(@recipe)) do |form| %>
+<%= form_with(model: @recipe_food, url: recipe_recipe_foods_path(@recipe), html {class: "recipe-create-form"}) do |form| %>
+  <div class="form-group">
   <%= form.label "Select Ingredient"%>
-  <%= form.collection_select(:food_id, @foods_to_select, :id, :name) %> <br><br>
+  <%= form.collection_select(:food_id, @foods_to_select, :id, :name, {}, {class: "form-control"}) %> <br><br>
+  </div>
+
+  <div class="form-group">
   <%= form.label "Define quantity for the ingredient "%>
-  <%= form.number_field :quantity, min: 1 %><br><br>
+  <%= form.number_field :quantity, min: 1 %, class: "form-control"><br><br>
+  </div>
+
+
   <%= form.hidden_field :recipe_id, value: @recipe.id %>
-  <%= form.submit "Add ingredient", class: "button" %>
+  <%= form.submit "Add ingredient", class: "btn btn-primary" %>
 <% end %>
 
-<button><%= link_to "Back to recipe", recipe_path(@recipe)%></button>
+<button class="btn btn-secondary"><%= link_to "Back to recipe", recipe_path(@recipe)%></button>
