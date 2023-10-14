@@ -1,5 +1,5 @@
 <h1 class="app-title">Add a new food to your list</h1>
-
+<div class="recipe-container">
 <%= form_with model: @food, local:true, class: "food-form" do |form| %>
   <div class="form-group">
   <%= form.label :name, "Food name"%>
@@ -29,3 +29,4 @@
   <%= form.submit "Add Food", class: "button" %>
   </div>
 <% end %>
+</div>

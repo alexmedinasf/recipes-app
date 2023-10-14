@@ -1,3 +1,4 @@
+<div class="recipe-container">
 <%= form_with model: [@recipe], local:true do |form| %>
   <%= form.label :name, "Recipe name"%>
   <%= form.text_field :name, :required => true  %> <br><br>
@@ -9,3 +10,4 @@
   <%= form.text_area :description, placeholder: "Description ", :required => true  %><br><br>
   <%= form.submit "Save new recipe", class: "button" %>
 <% end %>
+</div>
