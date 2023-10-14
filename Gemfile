@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
+gem 'cancancan'
+
 gem 'devise'
 
 gem 'rubocop', '>= 1.0', '< 2.0'
@@ -62,7 +64,7 @@ end
 
 group :development do
   gem 'letter_opener'
-
+  
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
