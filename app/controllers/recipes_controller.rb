@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
       render :show
     else
       redirect_to public_recipes_path
-    end   
+    end
   end
 
   def update

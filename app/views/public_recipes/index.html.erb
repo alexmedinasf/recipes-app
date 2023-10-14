@@ -5,11 +5,12 @@
   <div>
     <%= recipe.name %>
     <%= "by #{recipe.user.name}"%>
-    <%= recipe.recipe_foods.count %>
+    <%= "Total food items #{recipe.recipe_foods.count}" %>
+      <%amount = 0%>
     <% recipe.recipe_foods.each do |f|%>
-      <% @amount += ((f.quantity * f.food.price)) %>
+      <% amount += ((f.quantity * f.food.price)) %>
     <%end%>
-    <%="Total amount #{@amount}"%>
+    <%="Total amount #{amount}"%>
   </div>
 <%end%>  
 <%end%>

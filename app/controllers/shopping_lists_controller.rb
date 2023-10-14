@@ -8,7 +8,7 @@ class ShoppingListsController < ApplicationController
   def total_value(recipes)
     @food_data = {}
     @total = 0
-    recipes.each do |recipe|      
+    recipes.each do |recipe|
       recipe.recipe_foods.each do |rf|
         if @food_data[rf.food.id].nil?
           @food_data[rf.food.id] = rf.quantity
@@ -16,9 +16,9 @@ class ShoppingListsController < ApplicationController
           @food_data[rf.food.id] += rf.quantity
         end
         subtotal = ((rf.food.quantity - rf.quantity) * rf.food.price)
-        @total += subtotal      
+        @total += subtotal
       end
     end
-    [@total, @food_data]      
+    [@total, @food_data]
   end
 end

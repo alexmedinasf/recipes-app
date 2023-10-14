@@ -3,9 +3,8 @@
     Prearation time: <%= @recipe.preparation_time%> hour/s
   </div>
   <div>
-    <%= @recipe.public %>
     <% if can? :manage, @recipe %>
-      <%= button_to "Public", recipe_path(@recipe), method: :patch %>
+      <%= button_to "#{@recipe.public ? 'Public' : 'Not Public'}", recipe_path(@recipe), method: :patch %>
     <%end%>
   </div>
   </div>
@@ -18,7 +17,7 @@
 
 <% if can? :manage, @recipe %>
 <div class="generate-and-add">
-  <button>Generate shopping list</button>
+  <button><%= link_to "Generate Shooping List", general_shopping_list_path %></button>
   <button><%= link_to "Add new ingredient", new_recipe_recipe_food_path(@recipe) %></button>
 </div>
 
