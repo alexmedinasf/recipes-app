@@ -15,8 +15,7 @@
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
+    - [Key Features](#key-features) 
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -69,14 +68,6 @@
 - **Run Unit and Integrations tests**
 - **User authentication using devise gem**
 - **Solve N+1 Issues**
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-
-- This Project doesn't have Live Demo yet
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
