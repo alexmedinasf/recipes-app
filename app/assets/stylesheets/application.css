@@ -333,3 +333,18 @@ body {
 .text-xl {
   font-size: 1.25rem;
 }
+
+.remove-button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.remove-button:hover {
+  background-color: darkblue;
+}
