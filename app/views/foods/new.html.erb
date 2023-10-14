@@ -2,12 +2,12 @@
 
 <%= form_with model: [@food], local:true do |form| %>
   <%= form.label :name, "Food name"%>
-  <%= form.text_field :name %> <br><br>
+  <%= form.text_field :name, :required => true %> <br><br>
   <%= form.label :measurement_unit, "Measure Unit"%>
-  <%= form.select :measurement_unit, ['units','grams', 'kilograms', 'liters'] %><br><br>
+  <%= form.select :measurement_unit, ['units','grams', 'kilograms', 'liters'], :required => true %><br><br>
   <%= form.label :price, "Unit price"%>
-  <%= form.text_field :price, placeholder: "Unit price " %><br><br>
+  <%= form.text_field :price, placeholder: "Unit price " , :required => true, type: 'number', step: '0.1', min: 1%><br><br>
   <%= form.label :quantity, "Amount of food"%>
-  <%= form.text_field :quantity, placeholder: "Quantity " %><br><br>
+  <%= form.number_field :quantity, placeholder: "Quantity ", :required => true %><br><br>  
   <%= form.submit "Add Food", class: "button" %>
 <% end %>

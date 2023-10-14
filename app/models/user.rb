@@ -8,7 +8,4 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  # def recipes
-  #   recipes.order('created_at Desc')
-  # end
 end
