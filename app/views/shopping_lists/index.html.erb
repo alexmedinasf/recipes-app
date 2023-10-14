@@ -6,7 +6,7 @@
       <th class="text-xs text-white uppercase bg-gray-700 p-4">Quantity</th>
       <th class="text-xs text-white uppercase bg-gray-700 p-4">Price</th>
     </tr>
-    <h2 class="my-5 border-solid w-72 rounded-md p-2 bg-black text-white text-xl text-center">Amount of items to buy: <%= @recipes.count%></h2>
+    <h2 class="my-5 border-solid w-72 rounded-md p-2 bg-black text-white text-xl text-center">Amount of items to buy: <%= @value[1].length%></h2>
     <h2 class="my-5 border-solid w-80 rounded-md p-2 bg-black text-white text-xl text-center">Total value of food needed: <%= @value[0]%>  
     <% @foods.each do |food| %>
     <% unless @value[1][food.id].nil? %>
