@@ -1,13 +1,23 @@
-<h1>Add a new food to your list</h1>
+<h1 class="app-title">Add a new food to your list</h1>
 
-<%= form_with model: [@food], local:true do |form| %>
-  <%= form.label :name, "Food name"%>
-  <%= form.text_field :name %> <br><br>
-  <%= form.label :measurement_unit, "Measure Unit"%>
-  <%= form.select :measurement_unit, ['units','grams', 'kilograms', 'liters'] %><br><br>
-  <%= form.label :price, "Unit price"%>
-  <%= form.text_field :price, placeholder: "Unit price " %><br><br>
-  <%= form.label :quantity, "Amount of food"%>
-  <%= form.text_field :quantity, placeholder: "Quantity " %><br><br>
-  <%= form.submit "Add Food", class: "button" %>
+<%= form_with model: [@food], local:true, class: "food-form" do |form| %>
+  <div class="form-group">
+    <%= form.label :name, "Food name"%>
+    <%= form.text_field :name %>
+  </div>
+  <div class="form-group">
+    <%= form.label :measurement_unit, "Measure Unit"%>
+    <%= form.select :measurement_unit, ['units','grams', 'kilograms', 'liters'] %>
+  </div>
+  <div class="form-group">
+    <%= form.label :price, "Unit price"%>
+    <%= form.text_field :price, placeholder: "Unit price " %>
+  </div>
+  <div class="form-group">
+    <%= form.label :quantity, "Amount of food"%>
+    <%= form.text_field :quantity, placeholder: "Quantity " %>
+  </div>
+  <div class="form-group">
+    <%= form.submit "Add Food", class: "button submit-button" %>
+  </div>
 <% end %>
