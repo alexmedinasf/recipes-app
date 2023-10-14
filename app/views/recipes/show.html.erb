@@ -4,15 +4,19 @@
   </div>
   <div>
     <%= @recipe.public %>
-    <%= button_to "Public", recipe_path(@recipe), method: :patch %> 
+    <% if can? :manage, @recipe %>
+      <%= button_to "Public", recipe_path(@recipe), method: :patch %>
+    <%end%>
   </div>
   </div>
     Cooking time: <%= @recipe.cooking_time%> hour/s
   <div>
-    Steps go here...
+    <%= @recipe.description%>
   </div>
 </div>    
 
+
+<% if can? :manage, @recipe %>
 <div class="generate-and-add">
   <button>Generate shopping list</button>
   <button><%= link_to "Add new ingredient", new_recipe_recipe_food_path(@recipe) %></button>
@@ -43,4 +47,5 @@
     <% end %>
   </tbody>
 </table>
+<%end%>
 
