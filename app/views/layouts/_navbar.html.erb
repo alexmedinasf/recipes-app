@@ -7,15 +7,7 @@
       <li class="nav-item">
         <%= link_to 'Sign Out', destroy_user_session_path, class: "nav-link auth-link", data: { turbo_method: :delete } %>
       </li>
-    <% else %>
-      <li class="nav-item">
-        <a class="nav-link auth-link" href="<%= new_user_session_path %>">Sign In</a>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link auth-link' %>
-      </li>
-    <% end %>
-    <li class="nav-item">
+       <li class="nav-item">
       <a class="nav-link" href="<%= foods_path %>">Food List</a>
     </li>
     <li class="nav-item">
@@ -26,12 +18,23 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<%= new_recipe_path %>">Add Recipe</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="<%= public_recipes_path %>">Public Recipes</a>
+    </li>    
+     <li class="nav-item">
+      <a class="nav-link" href="<%= general_shopping_list_path %>">Shopping List</a>
     </li>
      <li class="nav-item">
-      <a class="nav-link" href="<%= shopping_list_path %>">Shopping List</a>
+      <a class="nav-link" href="<%= public_recipes_path %>">Public Recipes</a>
     </li>
+    <% else %>
+      <li class="nav-item">
+        <a class="nav-link auth-link" href="<%= new_user_session_path %>">Sign In</a>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link auth-link' %>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="<%= public_recipes_path %>">Public Recipes</a>
+    </li>
+    <% end %>   
   </ul>  
 </nav>  

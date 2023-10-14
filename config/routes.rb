@@ -8,6 +8,6 @@ Rails.application.routes.draw do
   end  
 
   get '/public_recipes', to: 'public_recipes#index', as: 'public_recipes'
-  get '/shopping_list', to: 'shopping_lists#index', as: 'shopping_list'  
+  get '/shopping_list', to: 'shopping_lists#index', as: 'general_shopping_list'  
 
 end

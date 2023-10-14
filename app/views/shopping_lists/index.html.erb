@@ -6,15 +6,17 @@
       <th class="text-xs text-white uppercase bg-gray-700 p-4">Quantity</th>
       <th class="text-xs text-white uppercase bg-gray-700 p-4">Price</th>
     </tr>
-    <h2 class="my-5 border-solid w-72 rounded-md p-2 bg-black text-white text-xl text-center">amought of items to buy: <%= @recipefoods.length%></h2>
-    <h3 class="my-5 border-solid w-80 rounded-md p-2 bg-black text-white text-xl text-center">total value of food needed it: <%= @recipefoods.sum {
-        |recipefood| (recipefood.quantity - recipefood.food.quantity) * recipefood.food.price } %></h3>
-    <% @recipefoods.each do |foods| %>
-    <tr>
-        <td class="p-4"><%= foods.food.name %></td>
-        <td class="p-4"><%= foods.quantity - foods.food.quantity %></td>
-        <td class="p-4"><%= foods.food.price * (foods.quantity - foods.food.quantity) %></td>
+    <h2 class="my-5 border-solid w-72 rounded-md p-2 bg-black text-white text-xl text-center">Amount of items to buy: <%= @recipes.count%></h2>
+    <h2 class="my-5 border-solid w-80 rounded-md p-2 bg-black text-white text-xl text-center">Total value of food needed: <%= @value[0]%>  
+    <% @foods.each do |food| %>
+    <% unless @value[1][food.id].nil? %>
+    <tr>       
+        <td class="p-4"><%= food.name %></td>
+        <td class="p-4"><%= food.quantity - @value[1][food.id]%></td>
+        <td class="p-4"><%= food.price * (food.quantity - @value[1][food.id]) %></td>
     </tr>
+    <% end %>
     <% end %>
   </table>
 </div>
+

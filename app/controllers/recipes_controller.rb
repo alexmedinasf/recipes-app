@@ -1,20 +1,20 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!
-  # , :set_recipe, only: %i[show edit update destroy]
-  # load_and_authorize_resource
+  before_action :authenticate_user!, except: [:show]
 
-  # GET /recipes or /recipes.json
   def index
     @user = current_user
     @recipes = @user.recipes
   end
 
-  # GET /recipes/1 or /recipes/1.json
   def show
-    @user = current_user
-    @recipe = @user.recipes.find(params[:id])
-    @foods = Food.all
-    @recipe_foods = RecipeFood.includes(:food).where(recipe_id: params[:id])
+    @recipe = Recipe.find(params[:id])
+    if can? :read, @recipe
+      @foods = Food.all
+      @recipe_foods = RecipeFood.includes(:food).where(recipe_id: params[:id])
+      render :show
+    else
+      redirect_to public_recipes_path
+    end
   end
 
   def update
