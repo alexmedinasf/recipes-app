@@ -1,15 +1,17 @@
+<div class="recipe-container">
 <div>
-  <div>
+  <h3 class="recipe-header">
     Prearation time: <%= @recipe.preparation_time%> hour/s
-  </div>
+  </h3>
   <div>
     <% if can? :manage, @recipe %>
       <%= button_to "#{@recipe.public ? 'Public' : 'Not Public'}", recipe_path(@recipe), method: :patch %>
     <%end%>
   </div>
-  </div>
+  <h3 class="recipe-header">
     Cooking time: <%= @recipe.cooking_time%> hour/s
-  <div>
+  </h3>
+   <div>
     <%= @recipe.description%>
   </div>
 </div>    
@@ -47,4 +49,4 @@
   </tbody>
 </table>
 <%end%>
-
+</div>

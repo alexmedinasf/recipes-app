@@ -1,13 +1,32 @@
-<h1>Add a new food to your list</h1>
-
-<%= form_with model: @food, local:true do |form| %>
+<h1 class="app-title">Add a new food to your list</h1>
+<div class="recipe-container">
+<%= form_with model: @food, local:true, class: "food-form" do |form| %>
+  <div class="form-group">
   <%= form.label :name, "Food name"%>
   <%= form.text_field :name, :required => true %> <br><br>
+
+  </div>
+  
+  <div class="form-group">
   <%= form.label :measurement_unit, "Measure Unit"%>
   <%= form.select :measurement_unit, ['units','grams', 'kilograms', 'liters'], :required => true %><br><br>
+
+  </div>
+
+  <div class="form-group">
   <%= form.label :price, "Unit price"%>
   <%= form.text_field :price, placeholder: "Unit price " , :required => true, type: 'number', step: '0.1'%><br><br>
+
+  </div>
+
+  <div class="form-group">
   <%= form.label :quantity, "Amount of food"%>
   <%= form.text_field :quantity, placeholder: "Quantity ", :required => true, type: 'number', step: '0.1' %><br><br>  
+
+  </div>
+
+  <div class="form-group">
   <%= form.submit "Add Food", class: "button" %>
+  </div>
 <% end %>
+</div>

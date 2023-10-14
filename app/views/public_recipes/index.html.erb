@@ -1,16 +1,30 @@
-<h1>Public Recipes</h1>
+<h1 class="page-title">Public Recipes</h1>
 
+<div class="big_cont">
 <% @recipes.each do |recipe| %>
-<%= link_to(recipe_path(recipe)) do %>
-  <div>
-    <%= recipe.name %>
-    <%= "by #{recipe.user.name}"%>
-    <%= "Total food items #{recipe.recipe_foods.count}" %>
+<%= link_to(recipe_path(recipe), class: "recipe-item") do %>
+  
+  <div class="small_cont">
+    <span class="recipe-title">
+      <%= recipe.name %>
+    </span>
+    <span class="recipe-author">
+      <%= "by #{recipe.user.name}"%>
+    </span>
+  </div>
+
+   <div class="small_cont">
+       <span class="recipe-info">
+      <%= "Total food items #{recipe.recipe_foods.count}" %>
+    </span>
+    <span class="recipe-price">
       <%amount = 0%>
-    <% recipe.recipe_foods.each do |f|%>
-      <% amount += ((f.quantity * f.food.price)) %>
-    <%end%>
-    <%="Total amount #{amount}"%>
+      <% recipe.recipe_foods.each do |f|%>
+        <% amount += ((f.quantity * f.food.price)) %>
+      <%end%>
+      <%="Total amount #{amount}"%>
+    </span>
   </div>
 <%end%>  
 <%end%>
+</div>

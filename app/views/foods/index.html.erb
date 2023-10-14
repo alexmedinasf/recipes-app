@@ -1,6 +1,6 @@
-<h1>Your Food List</h1>
+<h1 class="app-title">Your Food List</h1>
 
-<table>
+<table class="food-table">
   <thead>
     <tr>
       <th>Food</th>
@@ -17,12 +17,12 @@
         <td><%= food.measurement_unit %></td>
         <td><%= food.price %></td>
         <td><%= food.quantity %></td>
-        <td><%= button_to "Delete", food_path(food), method: :delete %></td>
+        <td class="action-column"><%= button_to "Delete", food_path(food), method: :delete, class: "delete-button"  %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<button>
+<button class="add-button">
   <%= link_to 'Add Food!', new_food_path %>
 </button>
